@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — Louise Bernard</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-row">
+    <a href="index.html" class="brand">Louise Bernard <em>— Senior Data Scientist</em></a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="contact.html" class="current">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <p class="section-eyebrow">Contact</p>
+  <h1 class="page-title">Get in touch</h1>
+  <p class="page-subtitle">
+    For research collaborations, advisory work, or speaking enquiries.
+  </p>
+
+  <div class="contact-grid">
+
+    <div class="contact-block">
+      <h3>Direct</h3>
+      <p>
+        <a href="mailto:louise.bernard01@gmail.com">louise.bernard01@gmail.com</a>
+      </p>
+      <p style="color: var(--ink-muted); margin-top: 1rem;">London, United Kingdom</p>
+
+      <h3 style="margin-top: 2.5rem;">Elsewhere</h3>
+      <p>
+        <a href="https://scholar.google.co.uk/citations?user=Sn6xR_sAAAAJ&hl=fr" target="_blank" rel="noopener">
+          Google Scholar
+        </a>
+      </p>
+      <p>
+        <a href="https://www.linkedin.com/in/bernardlouise/en/" target="_blank" rel="noopener">
+          LinkedIn
+        </a>
+      </p>
+    </div>
+
+    <div class="contact-block">
+      <h3>Send a message</h3>
+      <!--
+        Form configured for Formspree. To activate:
+        1. Sign up at https://formspree.io (free tier).
+        2. Replace YOUR_FORM_ID below with your form ID.
+        Until then the form is functional but messages will not send.
+      -->
+      <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="btn">Send</button>
+      </form>
+    </div>
+
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <span>© 2026 Louise Bernard</span>
+  <span>London, UK</span>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,566 @@
+/* ================================================================
+   Louise Bernard — personal site
+   Aesthetic: refined editorial. Warm cream paper, classical serif,
+   deep navy accents. Inspired by Hauser's tonality but distinct.
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  /* Warm paper palette */
+  --paper:        #f5efe4;
+  --paper-soft:   #ede4d3;
+  --ink:          #1a1f2e;
+  --ink-soft:     #3a3f4e;
+  --ink-muted:    #6b6e78;
+  --rule:         #c9bfac;
+  --accent:       #1f3a5f;       /* deep navy */
+  --accent-warm:  #8a3d2a;       /* terracotta — used sparingly */
+
+  /* Type */
+  --serif: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+  --sans:  "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Layout */
+  --measure: 38rem;
+  --gutter: 2.5rem;
+}
+
+/* -------- Reset --------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body, h1, h2, h3, h4, p, ul, ol, figure, blockquote { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+
+/* -------- Page --------- */
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 19px;
+  line-height: 1.6;
+  font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Subtle paper grain — pure CSS, no images */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(138, 61, 42, 0.025) 0, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(31, 58, 95, 0.02) 0, transparent 50%);
+}
+
+main, header, footer { position: relative; z-index: 1; }
+
+/* -------- Top nav --------- */
+.site-header {
+  padding: 2.5rem var(--gutter) 0;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.nav-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1.25rem;
+}
+
+.brand {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.35rem;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+
+.brand em {
+  font-style: italic;
+  color: var(--ink-muted);
+  font-weight: 400;
+  font-size: 0.95rem;
+}
+
+nav ul {
+  display: flex;
+  gap: 2rem;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 500;
+}
+
+nav a {
+  color: var(--ink-soft);
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+nav a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+nav a.current { color: var(--ink); border-bottom-color: var(--ink); }
+
+/* -------- Main column --------- */
+main {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 4rem var(--gutter) 6rem;
+}
+
+/* -------- Home hero --------- */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 3.5rem;
+  align-items: start;
+  margin-bottom: 4rem;
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.25rem, 4.5vw, 3.4rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.5rem;
+}
+
+.hero .role {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--ink-soft);
+  margin-bottom: 2rem;
+}
+
+.lede {
+  font-size: 1.25rem;
+  line-height: 1.55;
+  color: var(--ink);
+  max-width: 36rem;
+  margin-bottom: 1.75rem;
+}
+
+.lede strong { font-weight: 600; color: var(--ink); }
+
+.portrait {
+  position: relative;
+  width: 220px;
+  aspect-ratio: 4 / 5;
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  overflow: hidden;
+}
+
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.15) contrast(1.02);
+}
+
+.portrait-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* -------- Body prose --------- */
+.prose p {
+  max-width: var(--measure);
+  margin-bottom: 1.4rem;
+  color: var(--ink);
+}
+
+.prose p strong { font-weight: 600; }
+
+.prose a {
+  color: var(--accent);
+  border-bottom: 1px solid rgba(31, 58, 95, 0.3);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.prose a:hover {
+  border-bottom-color: var(--accent);
+  background: rgba(31, 58, 95, 0.06);
+}
+
+/* -------- Quick links row (home) --------- */
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2.25rem;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  margin: 2rem 0 3rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.quick-links a {
+  color: var(--ink-soft);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.quick-links a:hover { color: var(--accent); }
+
+.quick-links svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+}
+
+/* -------- Section headers --------- */
+.section-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink-muted);
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.page-title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 3.8vw, 2.85rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--ink-soft);
+  margin-bottom: 3rem;
+  max-width: var(--measure);
+}
+
+/* -------- Research page --------- */
+.papers {
+  border-top: 1px solid var(--rule);
+}
+
+.paper {
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.paper-year {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink-muted);
+  letter-spacing: 0.04em;
+  padding-top: 0.5rem;
+}
+
+.paper-title {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+}
+
+.paper-authors {
+  font-style: italic;
+  color: var(--ink-soft);
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+}
+
+.paper-venue {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.paper-venue .status {
+  display: inline-block;
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  padding: 0.15rem 0.6rem;
+  margin-left: 0.5rem;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.paper-summary {
+  color: var(--ink);
+  margin-bottom: 1rem;
+  max-width: var(--measure);
+}
+
+.paper-links {
+  display: flex;
+  gap: 1.5rem;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.paper-links a {
+  color: var(--accent);
+  border-bottom: 1px solid rgba(31, 58, 95, 0.3);
+  padding-bottom: 1px;
+}
+
+.paper-links a:hover { border-bottom-color: var(--accent); }
+
+/* -------- CV page --------- */
+.cv-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.25rem;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--accent);
+  color: var(--paper);
+  border: 1px solid var(--accent);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn:hover { background: var(--ink); border-color: var(--ink); }
+
+.btn.secondary {
+  background: transparent;
+  color: var(--accent);
+}
+
+.btn.secondary:hover { background: var(--accent); color: var(--paper); }
+
+.cv-section {
+  margin-bottom: 3rem;
+}
+
+.cv-section h2 {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink-muted);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.cv-entry {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 2rem;
+  margin-bottom: 1.75rem;
+}
+
+.cv-dates {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  padding-top: 0.2rem;
+  letter-spacing: 0.02em;
+}
+
+.cv-role {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.3;
+  margin-bottom: 0.25rem;
+}
+
+.cv-org {
+  font-style: italic;
+  color: var(--ink-soft);
+  margin-bottom: 0.75rem;
+}
+
+.cv-detail {
+  color: var(--ink);
+  max-width: var(--measure);
+}
+
+.cv-detail ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.cv-detail li {
+  padding-left: 1.25rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.cv-detail li::before {
+  content: "·";
+  position: absolute;
+  left: 0.3rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* -------- Contact page --------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-top: 2rem;
+}
+
+.contact-block h3 {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink-muted);
+  margin-bottom: 1rem;
+}
+
+.contact-block p { margin-bottom: 0.5rem; }
+
+.contact-block a { color: var(--accent); border-bottom: 1px solid rgba(31, 58, 95, 0.3); }
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form label {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-muted);
+  margin-bottom: 0.35rem;
+  display: block;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--ink);
+  border-radius: 0;
+  transition: border-color 0.15s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: var(--paper);
+}
+
+.contact-form textarea { min-height: 8rem; resize: vertical; font-family: var(--serif); }
+
+/* -------- Footer --------- */
+.site-footer {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 2.5rem var(--gutter) 3rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  letter-spacing: 0.03em;
+}
+
+/* -------- Responsive --------- */
+@media (max-width: 760px) {
+  :root { --gutter: 1.5rem; }
+  body { font-size: 17px; }
+
+  .nav-row { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  nav ul { gap: 1.25rem; flex-wrap: wrap; }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .portrait {
+    width: 160px;
+    margin-bottom: 1rem;
+  }
+
+  .paper { grid-template-columns: 1fr; gap: 0.5rem; }
+  .paper-year { padding-top: 0; }
+
+  .cv-entry { grid-template-columns: 1fr; gap: 0.5rem; }
+  .cv-dates { padding-top: 0; }
+
+  .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+/* -------- Subtle entrance animation --------- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero, .page-title, .page-subtitle, .papers, .cv-actions, .cv-section, .contact-grid, .quick-links, .lede {
+  animation: fadeUp 0.7s ease both;
+}
+
+.page-subtitle { animation-delay: 0.08s; }
+.papers, .cv-section, .contact-grid, .quick-links { animation-delay: 0.15s; }
