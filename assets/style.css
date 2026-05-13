@@ -425,6 +425,17 @@ main {
   margin-bottom: 0.75rem;
 }
 
+.cv-org a {
+  color: var(--accent);
+  border-bottom: 1px solid rgba(31, 58, 95, 0.3);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.cv-org a:hover {
+  border-bottom-color: var(--accent);
+  background: rgba(31, 58, 95, 0.06);
+}
+
 .cv-detail {
   color: var(--ink);
   max-width: var(--measure);
